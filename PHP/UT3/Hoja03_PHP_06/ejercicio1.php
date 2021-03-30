@@ -34,7 +34,7 @@ if(isset($_POST["actualizar"])){
 <div class="container">
     <div class="row justify-content-center ">
         <div class="col-6 mt-5">
-            <lenged class="h1 text-primary text-center">Busca tu coche</lenged>
+            <lenged class="h1 text-primary text-right">Busca tu coche</lenged>
             <form class="border border-success pt-2 px-2 pb-5" action='<?php echo $_SERVER['PHP_SELF'] ?>' method="POST">
                 <div class="form-group">
                     <label for="marca">Marca:</label>
@@ -63,7 +63,6 @@ if(isset($_POST["actualizar"])){
                     ?>
                     <input type="submit" class="form-control btn btn-primary" name="actualizar" value="Actualizar">
                     <input type="hidden" name="busqueda" value="<?= $_POST['marca'] ?>">
-
 
                 </div>
             </form>
