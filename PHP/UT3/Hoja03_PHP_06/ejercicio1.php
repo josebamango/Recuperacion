@@ -33,7 +33,7 @@ if(isset($_POST["actualizar"])){
 ?>
 <div class="container">
     <div class="row justify-content-center ">
-        <div class="col-6 mt-5">
+        <div class="col-6 mt-5 border border-warning">
             <lenged class="h1 text-primary text-right">Busca tu coche</lenged>
             <form class="border border-success pt-2 px-2 pb-5" action='<?php echo $_SERVER['PHP_SELF'] ?>' method="POST">
                 <div class="form-group">
