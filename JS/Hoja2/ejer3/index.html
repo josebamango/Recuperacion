@@ -21,12 +21,14 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-6">
-            <div id="tabla" class="mt-5 mb-5 border border-dark p-3">
+            <div id="tablas">
+                <div id="tabla" class="mt-5 mb-5 border border-dark p-3">
+                </div>
             </div>
             <form action="" method="POST">
                 <legend class="h1 text-center text-primary">Reserva de ordenadores</legend>
                 <label for="sala">Sala:</label>
-                <select class="form-control" id="salas">
+                <select class="form-control" id="sala">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -34,7 +36,7 @@
                     <option value="5">5</option>
                 </select>
                 <label for="ordenador">Nº de ordenador:</label>
-                <select class="form-control" id="ordenadores">
+                <select class="form-control" id="ordenador">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -56,10 +58,11 @@
                     <option value="19">19</option>
                     <option value="20">20</option>
                 </select>
-                <input type="button" value="Reservar" class="btn btn-success mt-2">
+                <input type="button" value="Reservar" class="btn btn-success mt-2" id="reservar">
+                <input type="button" value="Liberar" class="btn btn-primary mt-2" id="liberar">
                 <textarea id="resultado" cols="50" rows="5" class="form-control mt-2 bg bg-dark text-light text-center"
                           readonly></textarea>
-                <textarea id="total" cols="50" rows="1" class="form-control mt-2 bg bg-warning text-light text-center"
+                <textarea id="total" cols="50" rows="2" class="form-control mt-2 bg bg-warning text-light text-center"
                           readonly></textarea>
             </form>
         </div>
