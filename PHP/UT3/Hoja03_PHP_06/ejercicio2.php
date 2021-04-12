@@ -9,11 +9,15 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
           integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
 </head>
-
+<style>
+    img{
+        width: 500px;
+    }
+</style>
 <body>
 <?php
 
-$equipos = array(
+$liga = array(
     "Brooklyn Nets" => array(
         "Entrenador" => array(
             "Steve Nash" => "img/nash.jpg"
@@ -28,7 +32,7 @@ $equipos = array(
     ),
     "Los Angeles Lakers" => array(
         "Entrenador" => array(
-            "Frank Vogel" => "img/jordan.jpg"
+            "Frank Vogel" => "img/vogel.jpg"
         ),
         "Jugadores" => array(
             "LeBron James" => "img/lebron.jpg",
@@ -40,6 +44,19 @@ $equipos = array(
     ),
 );
 
+if (isset($_POST['buscar'])) {
+    $equipoSeleccionado = $_POST['equipo'];
+    $posicionSeleccionada = $_POST['posicion'];
+}
+
+function mostrarEquipo($liga, $equipo, $puesto)
+{
+    $informacionBuscada = null;
+    foreach ($liga[$equipo][$puesto] as $jugador => $imagen) {
+        $informacionBuscada .= "<h4 class='text-secondary'>$jugador</h4><img class='img-fluid' src='$imagen'/>";
+    }
+    return $informacionBuscada;
+}
 
 ?>
 <div class="container">
@@ -51,18 +68,22 @@ $equipos = array(
                 <div class="form-group">
                     <label for="equipo">Equipo:</label>
                     <select class='form-control' id='equipo' name="equipo">
-                        <option value="todos">Todos</option>
-                        <?php foreach ($equipos as $equipo => $vestuario) : ?>
+                        <option value="Todos">Todos</option>
+                        <?php foreach ($liga as $equipo => $vestuario) : ?>
                             <option value="<?= $equipo ?>" <?= $selectedProp = (isset($equipoSeleccionado) &&
                                 $equipoSeleccionado == $equipo) ? "selected" : ""; ?>><?= $equipo ?></option>
                         <?php endforeach ?>
                     </select>
-                    <label for="puesto" class="d-block mt-4">Puesto:</label>
-                    <?php foreach ($equipos["Brooklyn Nets"] as $posicion => $arrayJugadores) : ?>
+
+
+                    <label for="posicion" class="d-block mt-4">Posición:</label>
+                    <?php foreach ($liga['Los Angeles Lakers'] as $posicion => $arrayJugadores) : ?>
                         <div class="form-check">
                             <label class="form-check-label" for="<?= $posicion ?>">
-                                <input class="form-check-input d-block" type="radio" id="<?= $posicion ?>" <?= $checkedProp = (isset($posicionSeleccionada) &&
-                                    $posicionSeleccionada == $posicion) ? "checked" : ""; ?> name="posicion" class="d-inline" value="<?= $posicion ?>">
+                                <input class="form-check-input d-block" type="radio"
+                                       id="<?= $posicion ?>" <?= $checkedProp = (isset($posicionSeleccionada) &&
+                                    $posicionSeleccionada == $posicion) ? "checked" : ""; ?> name="posicion"
+                                       class="d-inline" value="<?= $posicion ?>">
                                 <?= $posicion ?></label>
                         </div>
                     <?php endforeach ?>
@@ -70,24 +91,52 @@ $equipos = array(
                 <button type="submit" class="btn btn-dark rounded" name="buscar">Buscar</button>
             </form>
 
+
+            <?php if (isset($_POST['buscar'])): ?>
             <div class="row justify-content-center">
                 <table class="table table-info table-striped mt-2 text-center">
                     <thead>
                     <tr>
-                     <!--   <?php /*foreach ($equipos["Brooklyn Nets"] as $miembro => $jugadores) : */?>
-
-
-                            <th scope="col">sada</th>
-                        --><?php /*endforeach; */?>
-
+                        <?php if ($equipoSeleccionado != "Todos") : ?>
+                            <th scope="col">
+                                <h2><?= $equipoSeleccionado ?></h2>
+                            </th>
+                        <?php else : ?>
+                            <th scope="col">
+                                <h3>Brooklyn Nets</h3>
+                            </th>
+                            <th scope="col">
+                                <h3>Los Angeles Lakers</h3>
+                            </th>
+                        <?php endif ?>
                     </tr>
+
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                    </tr>
+                    <?php if ($equipoSeleccionado != "Todos") : ?>
+                        <?php foreach ($liga[$equipoSeleccionado][$posicionSeleccionada] as $jugador => $url) : ?>
+                            <tr>
+                                <td>
+                                    <h4 class="text-secondary"><?= $jugador ?></h4><img class="img-fluid" src="<?= $url ?>">
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <tr>
+                            <!-- Si son todos los equipos -->
+                            <?php foreach ($liga as $cadaEquipo => $value) : ?>
+
+                                <td>
+                                    <?= mostrarEquipo($liga, $cadaEquipo, $posicionSeleccionada); ?>
+                                </td>
+
+                            <?php endforeach ?>
+                        </tr>
+                    <?php endif ?>
                     </tbody>
+
                 </table>
+                <?php endif ?>
 
             </div>
         </div>
