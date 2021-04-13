@@ -7,8 +7,17 @@ function inicio() {
     var reset = document.getElementById('reset');
     var alumnos = new Array('Joseba', 'Alex', 'Carlos', 'Berto', 'Cristian', 'Pablo', 'Victor', 'Corral');
     concursantes.innerHTML = alumnos.join('-');
+    var contador = 0;
+
     boton.addEventListener('click', function () {
-        sorteo(alumnos);
+        contador++;
+        if(contador<9){
+            [n1, cifra] = sorteo(alumnos);
+            console.log(n1 + cifra);
+            ganador.innerHTML = n1 + " " + cifra;
+            concursantes.innerHTML = alumnos.join('-');
+        }
+
     }, false);
 
     reset.addEventListener('click', function () {
@@ -18,10 +27,8 @@ function inicio() {
     function sorteo(alumnos) {
         var limite = alumnos.length;
         var random = Math.floor(Math.random() * limite);
-        ganador.innerHTML = alumnos[random];
         alumnos.splice(random, 1);
-        concursantes.innerHTML = alumnos.join('-');
-        return [alumnos[random], random];
+        return [alumnos[random], contador];
     }
 
     function resetear() {
@@ -29,11 +36,9 @@ function inicio() {
         alumnos = aux;
         concursantes.innerHTML = aux.join('-');
         ganador.innerHTML = '';
+        contador=0;
     }
 
-    function destruc() {
-        return [alumnos[random], random];
-    }
 
 }
 
