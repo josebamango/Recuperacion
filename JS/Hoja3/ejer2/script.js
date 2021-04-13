@@ -26,7 +26,13 @@ function inicio() {
 
     function resetear() {
         var aux = new Array('Joseba', 'Alex', 'Carlos', 'Berto', 'Cristian', 'Pablo', 'Victor', 'Corral');
+        alumnos = aux;
         concursantes.innerHTML = aux.join('-');
+        ganador.innerHTML = '';
+    }
+
+    function destruc() {
+        return [alumnos[random], random];
     }
 
 }
