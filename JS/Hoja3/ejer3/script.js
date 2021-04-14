@@ -7,8 +7,9 @@ function inicio() {
     var arrayValores = new Array();
 
     boton.addEventListener('click', function () {
+        arrayValores=[];
         valores.innerHTML = addValores();
-        resultado.innerHTML += "La suma de todos los valores es " + suma(arrayValores) + "\nLa suma de los mayores de 36 es " + suma36(arrayValores) + "\nHay " + suma50(arrayValores) + " valores mayores de 50";
+        resultado.innerHTML = "La suma de todos los valores es " + suma(arrayValores) + "\nLa suma de los mayores de 36 es " + suma36(arrayValores) + "\nHay " + suma50(arrayValores) + " valores mayores de 50";
     }, false);
 
 
