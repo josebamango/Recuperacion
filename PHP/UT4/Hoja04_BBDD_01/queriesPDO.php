@@ -27,6 +27,50 @@ function getJugadoresEquipo($equipo)
 
 }
 
+function serTraspaso($jugadorBaja, $nombre, $procedencia, $altura, $peso, $posicion, $equipo)
+{
+    $conexion = getConexion();
+    $correcto = true;
+    $conexion->beginTransaction();
+    $borrado = $conexion->prepare("DELETE FROM jugadores WHERE nombre=?");
+    $borrado->bindParam(1, $jugadorBaja);
+    if ($borrado->execute() != true) {
+        $correcto = false;
+    }
+    $update = $conexion->prepare("INSERT INTO jugadores (codigo, nombre, procedencia,altura,peso,posicion ,nombre_equipo)VALUES ((SELECT (t.codigo+1) FROM jugadores AS t ORDER BY t.codigo DESC LIMIT 1),?,?,?,?,?,?)");
+    $update->bindParam(1, $nombre);
+    $update->bindParam(2, $procedencia);
+    $update->bindParam(3, $altura);
+    $update->bindParam(4, $peso);
+    $update->bindParam(5, $posicion);
+    $update->bindParam(6, $equipo);
+    if ($update->execute() != true) {
+        $correcto = false;
+    }
+    if ($correcto) {
+        $conexion->commit();
+        return true;
+    } else {
+        $conexion->rollBack();
+        return false;
+    }
+}
+
+;
+
+function updatePeso($nombre, $peso)
+{
+    $conexion = getConexion();
+    $correcto = true;
+    $update = $conexion->prepare("UPDATE jugadores SET peso=? WHERE nombre=?");
+    $update->bindParam(1, $peso);
+    $update->bindParam(2, $nombre);
+    if ($update->execute() != true) {
+        $correcto = false;
+    }
+    return $correcto;
+}
+
 
 /*require_once "ConexionPDO.php";
 
