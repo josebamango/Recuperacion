@@ -2,7 +2,7 @@
 require_once "queriesPDO.php";
 $nombreEquipos = getEquipos();
 
-if(isset($_POST['mostrar'])){
+if (isset($_POST['mostrar'])) {
     $equipoSelected = $_POST["equipos"];
     $jugadoresEquipoSelected = getJugadoresEquipo($equipoSelected);
 }
@@ -13,10 +13,11 @@ function crearTablaJugadores($arrayJugadores)
     foreach ($arrayJugadores as $jugador) {
         echo "<tr scope='row'>";
         echo '<td>' . $jugador["nombre"] . '</td>';
-        echo '<td><input type="number" name="peso[]" value="' . $jugador["peso"] . '"></td>';
+        echo '<td><input class="form-control text-center" type="number" name="peso[]" value="' . $jugador["peso"] . '"></td>';
         echo '</tr>';
     }
 }
+
 ?>
 
 <!doctype html>
@@ -43,7 +44,7 @@ function crearTablaJugadores($arrayJugadores)
 
                 <select name="equipos" id="equipos" class="form-control border border-success text-center">
                     <?php foreach ($nombreEquipos as $equipos) : ?>
-                        <option value="<?= $equipos; ?>"><?= $selectedProp = (isset($equipoSelected) && $equipoSelected == $equipos["nombre"]) ? "selected" : ""; ?> <?= $equipos ?> </option>
+                        <option value="<?= $equipos; ?>"> <?= $equipos ?> </option>
                     <?php endforeach; ?>
                 </select>
 
@@ -58,14 +59,13 @@ function crearTablaJugadores($arrayJugadores)
                                 Nombre
                             </th>
                             <th scope="col">
-                                Peso
+                                Peso (kg)
                             </th>
                         </tr>
 
                         </thead>
                         <tbody>
                         <?php crearTablaJugadores($jugadoresEquipoSelected) ?>
-
                         </tbody>
 
                     </table>
