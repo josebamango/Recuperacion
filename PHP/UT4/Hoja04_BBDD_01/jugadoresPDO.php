@@ -138,9 +138,9 @@ if (isset($_POST["botonTraspaso"])) {
     $peso = $_POST["peso"];
     $posicion = $_POST["posicion"];
     if (setTraspaso($jugadorBaja, $jugadorAlta, $procedencia, $altura, $peso, $posicion, $equipoSelected)) {
-        echo "<p class='font-weight-bold p-3 mb-2 bg-danger'>Error al realizar el traspaso</p>";
+        echo "<p class='font-weight-bold p-3 mb-2 bg-danger text-center'>Error al realizar el traspaso</p>";
     } else {
-        echo "<p class='font-weight-bold p-3 mb-2 bg-success'>Traspaso realizado con exito</p>";
+        echo "<p class='font-weight-bold p-3 mb-2 bg-success text-center'>Traspaso realizado con exito</p>";
     }
 }
 ?>

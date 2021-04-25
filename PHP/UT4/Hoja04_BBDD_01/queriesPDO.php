@@ -27,7 +27,7 @@ function getJugadoresEquipo($equipo)
 
 }
 
-function serTraspaso($jugadorBaja, $nombre, $procedencia, $altura, $peso, $posicion, $equipo)
+function setTraspaso($jugadorBaja, $nombre, $procedencia, $altura, $peso, $posicion, $equipo)
 {
     $conexion = getConexion();
     $correcto = true;
