@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Gestión</title>
+    <title>Mascotas</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,20 +9,33 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="claseMascota.js"></script>
+    <script src="script.js"></script>
 </head>
+<style>
+    .img{
+        width: 100px;
+    }
+</style>
 <body>
-
-
 <div class="container-fluid">
-    <div class="row justify-content-center mt-5">
-        <difv class="col-6 text-center">
-            <p class="h1 text-center text-primary">Gestión del funicular</p>
-            <div class="form-group justify-content-center">
-                <a href="reserva.php" class="btn btn-warning">Realizar una reserva</a>
-                <a href="llegada.php" class="btn btn-success">Llegada</a>
-                <a href="plazas.php" class="btn btn-danger">Plazas</a>
-            </div>
-        </difv>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <form action="" method="post">
+                <legend class="h2 text-primary text-center">Crea tu mascota</legend>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" class="form-control">
+                <label for="hambre">Hambre:</label>
+                <input type="number" id="hambre" class="form-control">
+                <label for="tope">Tope:</label>
+                <input type="number" id="tope" class="form-control">
+                <label for="imagen">Imagen:</label>
+                <input type="file" id="imagen" class="form-check mb-3">
+                <input type="button" id="crear" value="Crear" class="btn btn-success">
+                <input type="button" id="mostrar" value="Mostrar" class="btn btn-warning">
+            </form>
+            <textarea class="form-control mt-3" rows="10" cols="20" id="resultado"></textarea>
+        </div>
     </div>
 </div>
 

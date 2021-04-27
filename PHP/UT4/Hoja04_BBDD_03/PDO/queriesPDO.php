@@ -70,7 +70,29 @@ function getPlazas()
     return $datos;
 }
 
-function setPrecios()
+function setPrecios($arrayPlazas, $arrayPrecios)
 {
-
+    $nPlazas = count($arrayPlazas);
+    $correcto = true;
+    $conexion = getConexion();
+    $conexion->beginTransaction();
+    $sql = "UPDATE plazas SET precio = ? WHERE numero = ?;";
+    for ($i = 0; $i < $nPlazas; $i++) {
+        $consulta = $conexion->prepare($sql);
+        $consulta->bindParam(1, $arrayPrecios[$i]);
+        $consulta->bindParam(2, $arrayPlazas[$i]);
+        if ($consulta->execute() != true) {
+            $correcto = false;
+            break;
+        }
+    }
+    if ($correcto) {
+        $conexion->commit();
+        unset($conexion);
+        return true;
+    } else {
+        $conexion->rollBack();
+        unset($conexion);
+        return false;
+    }
 }

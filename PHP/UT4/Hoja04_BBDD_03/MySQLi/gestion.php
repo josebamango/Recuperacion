@@ -20,7 +20,6 @@
             <div class="form-group justify-content-center">
                 <a href="reserva.php" class="btn btn-warning">Realizar una reserva</a>
                 <a href="llegada.php" class="btn btn-success">Llegada</a>
-                <a href="plazas.php" class="btn btn-danger">Plazas</a>
             </div>
         </difv>
     </div>

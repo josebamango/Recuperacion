@@ -1,7 +1,17 @@
+<?php
+require_once 'queriesMySQLi.php';
+$texto = "";
+if (isset($_POST["llegada"])) {
+    if (llegarDestino()) {
+        $texto = "Operación realizada con éxito!";
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Gestión</title>
+    <title>Llegada</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,14 +25,18 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center mt-5">
-        <difv class="col-6 text-center">
-            <p class="h1 text-center text-primary">Gestión del funicular</p>
-            <div class="form-group justify-content-center">
-                <a href="reserva.php" class="btn btn-warning">Realizar una reserva</a>
-                <a href="llegada.php" class="btn btn-success">Llegada</a>
-                <a href="plazas.php" class="btn btn-danger">Plazas</a>
-            </div>
-        </difv>
+        <div class="col-6">
+            <p class="h2 text-left">Llegada</p>
+            <hr>
+            <form action="#" method="post">
+                <input type="submit" name="llegada" class="btn btn-success offset-3" value="Llegada">
+            </form>
+            <hr>
+            <a href="gestion.php" class="btn btn-primary">Atrás</a>
+            <?php if (isset($_POST['llegada'])): ?>
+                <p class="alert alert-info mt-2" role="alert"><?= $texto ?></p>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 
