@@ -70,7 +70,7 @@ function getPlazas()
     return $datos;
 }
 
-function setPrecios($arrayPlazas, $arrayPrecios)
+function setPrecios($arrayPrecios, $arrayPlazas)
 {
     $nPlazas = count($arrayPlazas);
     $correcto = true;
