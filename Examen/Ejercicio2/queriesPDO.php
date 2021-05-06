@@ -55,8 +55,7 @@ function getAtividadesInscritas($dni)
 {
     $conexion = getConexionP();
     $sql = ("SELECT clientes.id as id_c, actividades.id as id_act, idACtividad, inscripciones.dni as dni_i, horario, nombre, plazas
-                FROM actividades INNER JOIN inscripciones on idActividad=id_act 
-            INNER JOIN usuarios on dni=dni_i WHERE id_c=?");
+                FROM actividades INNER JOIN inscripciones on idActividad=id_act INNER JOIN usuarios on dni=dni_i WHERE id_c=?");
     $resultado = $conexion->prepare($sql);
     $resultado->bindParam(1, $dni);
     if ($resultado->execute()) {

@@ -5,7 +5,7 @@ session_start();
 $texto = "";
 if (isset($_POST['reservar'])) {
     $dni = $_SESSION['visitante']['dni'];
-    $actividad = $_POST['viaje'];
+    $actividad = $_POST['actividad'];
     if (addInscripcion($actividad, $dni)) {
         $texto = "Sesión reservada!";
     } else {
@@ -31,7 +31,8 @@ if (isset($_POST['reservar'])) {
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-4">
-                <p class="text-center h2 mt-4 text-primary">Bienvenido <?= $_SESSION['visitante']['nombre']." - ".$_SESSION['visitante']['dni'] ?></p>
+                <p class="text-center h2 mt-4 text-primary">
+                    Bienvenido <?= $_SESSION['visitante']['nombre'] . " - " . $_SESSION['visitante']['dni'] ?></p>
                 <form action="" method="post">
                     <label for="categoria">Categorías:</label>
                     <select name="categoria" class="form-control">
@@ -43,19 +44,21 @@ if (isset($_POST['reservar'])) {
                         <input type="submit" name="mostrar" class="btn btn-success" value="Mostrar">
                         <a href="inscripciones.php" class="btn btn-warning">Mis inscripciones</a>
                         <a href="logout.php"
-                           class="btn btn-danger">Desconectar <?/*= $_SESSION['visitante']['nombre'] */?></a>
+                           class="btn btn-danger">Desconectar <? /*= $_SESSION['visitante']['nombre'] */ ?></a>
                     </div>
                 </form>
                 <?php if (isset($_POST['mostrar'])): ?>
                     <?php foreach (getActividades($_POST['categoria']) as $actividad): ?>
                         <form action="" method="post" class="border border-dark text-center">
                             <p><?= $actividad["horario"] ?></p>
-                            <p><?= $actividad["nombre"] ?></p>
+                            <input type="text" name="actividad" class="form-control"
+                                   value="<?= $actividad["nombre"] ?>">
                             <p>Plazas: <?= $actividad["plazas"] ?></p>
                             <input type="submit" class="btn btn-success" value="Inscribirse" name="reservar">
                         </form>
                     <?php endforeach; ?>
                 <?php endif; ?>
+                <p class="alert alert-info" role="alert"><?= $texto ?></p>
             </div>
         </div>
     </div>

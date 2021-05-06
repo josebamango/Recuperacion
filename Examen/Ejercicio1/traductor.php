@@ -14,19 +14,15 @@ $dias = array(
     "Domingo" => "Sunday",
 );
 
-
-function traduccion($dias, $diaSelected)
-{
-    $mensaje = "";
-    foreach ($dias as $esp => $ing) {
-        if ($diaSelected == $ing) {
-            $mensaje = "CORRECTO!";
+$mensaje="";
+    if (isset($_POST['comprobar'])) {
+        if (strtolower($dias[$diaSelected]) == strtolower($ingles)) {
+            $mensaje= "Correcto!";
         } else {
-            $mensaje = "INCORRECTO!";
+            $mensaje= "Incorrecto!";
         }
     }
-    return $mensaje;
-}
+
 
 ?>
 
@@ -56,7 +52,7 @@ function traduccion($dias, $diaSelected)
                 <input type="text" name="ingles" class="form-control mt-2 mb-2" placeholder="En inglés?">
                 <input type="submit" name="comprobar" class="btn btn-success">
                 <?php if (isset($_POST['comprobar'])): ?>
-                    <p class="alert alert-info mt-3" role="alert"><?= traduccion($dias, $diaSelected) ?></p>
+                    <p class="alert alert-info mt-3" role="alert"><?= $mensaje ?></p>
                 <?php endif; ?>
             </form>
         </div>
