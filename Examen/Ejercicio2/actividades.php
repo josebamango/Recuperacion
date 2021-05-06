@@ -27,11 +27,11 @@ if (isset($_POST['reservar'])) {
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<?php /*if (isset($_SESSION['visitante'])): */?>
+<?php if (isset($_SESSION['visitante'])): ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-4">
-                <p class="text-center h2 mt-4 text-primary">Bienvenido <?/*= $_SESSION['visitante']['nombre']." - ".$_SESSION['visitante']['dni'] */?></p>
+                <p class="text-center h2 mt-4 text-primary">Bienvenido <?= $_SESSION['visitante']['nombre']." - ".$_SESSION['visitante']['dni'] ?></p>
                 <form action="" method="post">
                     <label for="categoria">Categorías:</label>
                     <select name="categoria" class="form-control">
@@ -59,13 +59,13 @@ if (isset($_POST['reservar'])) {
             </div>
         </div>
     </div>
-<?php /*else: */?><!--
+<?php else: ?>
     <?php
-/*    session_start();
+    session_start();
     session_unset();
     header("Location: index.php");
-    */?>
---><?php /*endif; */?>
+    ?>
+<?php endif; ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

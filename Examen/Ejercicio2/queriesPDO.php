@@ -18,7 +18,7 @@ function checkDNI($dni)
 function getUsuario($dni)
 {
     $conexion = getConexionP();
-    $sql = ("SELECT dni, nombre FROM usuarios WHERE nombre=?");
+    $sql = ("SELECT dni, nombre FROM usuarios WHERE dni=?");
     $resultado = $conexion->prepare($sql);
     $resultado->bindParam(1, $dni);
     if ($resultado->execute()) {
@@ -58,7 +58,7 @@ function getAtividadesInscritas($dni)
                 FROM actividades INNER JOIN inscripciones on idActividad=id_act 
             INNER JOIN usuarios on dni=dni_i WHERE id_c=?");
     $resultado = $conexion->prepare($sql);
-    $resultado->bindParam(1, $id);
+    $resultado->bindParam(1, $dni);
     if ($resultado->execute()) {
         while ($registro = $resultado->fetch()) {
             $datos[] = array(
