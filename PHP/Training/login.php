@@ -9,17 +9,19 @@ if (isset($_POST['entrar'])) {
         $errorLogin = "Introduce todos los datos!";
     } else {
         if ((checkUsuarioPass($nombre, $pass)) !== 0) {
-            $_SESSION['visitante'] =getUsuario($nombre, $pass);
+            $_SESSION['visitante'] = getUsuario($nombre, $pass);
             header("Location: viajes.php");
             exit();
-        }else{
-            $errorLogin="Error de login!";
+        } else {
+            $errorLogin = "Error de login!";
         }
     }
 }
 
 ?>
 
+
+<!--<link rel='stylesheet' href='bootstrap-4.5.3-dist\css/bootstrap.min.css'>-->
 
 <!doctype html>
 <html lang="en">
@@ -46,7 +48,7 @@ if (isset($_POST['entrar'])) {
                     <input type="submit" name="entrar" class="btn btn-success mt-3">
                 </div>
             </form>
-            <p class="alert alert-info mt-3" role="alert"><?=$errorLogin?></p>
+            <p class="alert alert-info mt-3" role="alert"><?= $errorLogin ?></p>
         </div>
     </div>
 </div>

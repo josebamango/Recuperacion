@@ -60,7 +60,7 @@ if (isset($_POST['reservar'])) {
     <?php
     session_start();
     session_unset();
-    header("Location: login.php");
+    header("Location: index.php");
     ?>
 <?php endif; ?>'
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
