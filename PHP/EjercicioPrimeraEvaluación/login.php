@@ -41,10 +41,8 @@ if (isset($_POST["login"])) {
                 <hr>
                 <form action="" method="post">
                     <div class="form-group">
-                        <label for="id_cliente">Usuario:</label>
-                        <input type="text" name="id_cliente" class="form-control text-success">
-                        <label for="pass">Contraseña:</label>
-                        <input type="password" name="pass" class="form-control text-success">
+                        <input type="text" name="id_cliente" class="form-control text-success mb-2" placeholder="Usuario">
+                        <input type="password" name="pass" class="form-control text-success mt-2" placeholder="Contraseña">
                     </div>
                     <div class="justify-content-center text-center">
                         <input type="submit" name="login" value="Entrar" class="btn btn-success">

@@ -2,6 +2,9 @@
 require_once 'queriesPDO.php';
 session_start();
 $errorLogin = '';
+var_dump($_POST);
+echo
+exit;
 if (isset($_POST['entrar'])) {
     $nombre = $_POST['id_cliente'];
     $pass = $_POST['pass'];

@@ -25,10 +25,12 @@ function checkUsuarioPass($usuario, $pass)
     $resulado = $conexion->prepare($sql);
     $resulado->bindValue(1, $usuario);
     $resulado->bindValue(2, $pass);
-    if ($resulado->execute()) {
+
+    if ($resulado->execute() && $resulado->rowCount() > 0) {
         return $usuario;
     }
     return 0;
+    //return ($resulado->execute() && $resulado->rowCount() > 0) ? $usuario : 0; Ternario, sustituye al if de arriba
 }
 
 function getViajes()
