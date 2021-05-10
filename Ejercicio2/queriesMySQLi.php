@@ -3,6 +3,7 @@ require_once 'conexionMySQLi.php';
 
 /*function checkDNI($dni)
 {
+
     $conexion = getConexionM();
     $resultado = $conexion->stmt_init();
     $resultado->prepare('SELECT dni, nombre FROM usuarios WHERE dni=?');
