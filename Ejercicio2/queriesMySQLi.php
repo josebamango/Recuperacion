@@ -3,6 +3,7 @@ require_once 'conexionMySQLi.php';
 
 /*function checkDNI($dni)
 {
+borrame
 
     $conexion = getConexionM();
     $resultado = $conexion->stmt_init();
